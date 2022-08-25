@@ -8,22 +8,7 @@ const instanciaAxios = axios.create({
 
 });
 
-const instanciaGatosAxios = axios.create({
-  baseURL: "https://http.cat/",
-});
-
 app.use(express.json());
-
-// const retornarGatos = async (req, res) => {
-//   try {
-//     const gatos = await instanciaGatosAxios.get("/100");
-//     return res.status(200).json(gatos);
-//   } catch (error) {
-//     return res.status(500).json({ mensagem: "Erro interno do servidor" });
-//   }
-// };
-
-// app.get("/status/:id", getGatos);
 
 const todosPersonagens = async (req, res) => {
   try {
