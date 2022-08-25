@@ -25,3 +25,12 @@ https://developer.marvel.com/documentation/authorization
 -> na hora da contrucao do cadastro comentar sobre sqlInjection e oq isso pode causar 
 
 https://www.stackhawk.com/blog/node-js-sql-injection-guide-examples-and-prevention/
+
+-> apos fazer o cadastro e  o login vamos realizar o middleware para autenticar e verificar o login 
+
+-> apos isso vamos colocar o middleware de verificacao 
+
+-> configurar o postman para aceitar essa verificacao de middleware com o token 
+
+-> construcao do CRUD para o todo (ver se vai ter imagens)
+
