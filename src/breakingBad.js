@@ -48,16 +48,4 @@ const consultadorPersonagem = async (req, res) => {
 
 app.get("/characters/:id", consultadorPersonagem);
 
-// const consultarPersonagem = async (req, res) => {
-//   try {
-//     const personagem = await instanciaAxios.get(`/characters?name=${nome}`);
-//     return res.status(200).json(personagem.data);
-//   } catch (error) {
-//     console.log(error);
-//     return res.status(500).json({ mensagem: "Erro interno do servidor" });
-//   }
-// };
-
-// app.get(`/characters?name=${nome}`, consultarPersonagem);
-
 app.listen(3001);

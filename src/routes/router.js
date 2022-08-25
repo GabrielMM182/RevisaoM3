@@ -1,13 +1,7 @@
 const express = require("express");
+const { cadastrarUsuario } = require('../controller/usuarios')
 const router = express.Router();
 
-const {
-  getCharacters,
-  getCharacter,
-  abc
-} = require("./Character/CharacterControler");
-
-router.get("/v1/public/characters", getCharacters);
-router.get("/v1/public/characters/:id", getCharacter);
+router.post('/cadastro', cadastrarUsuario)
 
 module.exports = router;
