@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon ./src/index.js",
+    "api": "nodemon ./src/breakingBad.js"
   },
   "keywords": [],
   "author": "",
