@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
 CREATE TABLE IF NOT EXISTS todos (
     id SERIAL PRIMARY KEY,
     tarefa TEXT NOT NULL,
+     ativo BOOLEAN DEFAULT TRUE,
     data DATE NOT NULL DEFAULT NOW(),
     usuario_id INTEGER NOT NULL REFERENCES usuarios(id)
 );

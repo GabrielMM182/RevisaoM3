@@ -1,16 +1,16 @@
 const pool = require("../database/conexao");
 
 const cadastrarTarefa = async (req, res) => {
-  const { tarefa } = req.body;
+  const { tarefa, ativo } = req.body;
 
   if (!tarefa) {
     return res.status(400).json({ mensagem: "O campo nome é obrigatorio" });
   }
 
   try {
-    const query = `insert into todos (usuario_id, tarefa, data) values ($1, $2, $3) returning *`;
+    const query = `insert into todos (usuario_id, tarefa, ativo, data) values ($1, $2, $3, $4) returning *`;
 
-    const params = [req.usuario.id, tarefa, new Date()];
+    const params = [req.usuario.id, tarefa, ativo, new Date()];
 
     const { rows } = await pool.query(query, params);
 
@@ -39,7 +39,9 @@ const atualizarTarefa = async (req, res) => {
 
     await pool.query(queryAtualizaTarefa, [tarefa, id]);
 
-    return res.status(204).send();
+    // return res.status(204).send();
+    return res.status(204).json(queryAtualizaTarefa);
+
   } catch (error) {
     console.log(error);
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
@@ -49,7 +51,7 @@ const atualizarTarefa = async (req, res) => {
 const listarTarefas = async (req, res) => {
 	try {
 		const { rows: todos } = await pool.query(
-			'select id, tarefa, data from todos where usuario_id = $1',
+			'select id, tarefa, ativo, data from todos where usuario_id = $1',
 			[req.usuario.id]
 		)
 		return res.json(todos)
@@ -64,7 +66,7 @@ const detalharTarefas = async (req, res) => {
 
 	try {
 		const { rows, rowCount } = await pool.query(
-			'select  tarefa, data from todos where id = $1 and usuario_id = $2',
+			'select  tarefa, ativo, data from todos where id = $1 and usuario_id = $2',
 			[id, req.usuario.id]
 		)
 
@@ -85,7 +87,7 @@ const deletarTarefa = async (req, res) => {
 
 	try {
 		const { rows, rowCount } = await pool.query(
-			'select  id, tarefa, data from todos where id = $1 and usuario_id = $2',
+			'select  id, tarefa, ativo, data from todos where id = $1 and usuario_id = $2',
 			[id, req.usuario.id]
 		)
 
@@ -95,7 +97,10 @@ const deletarTarefa = async (req, res) => {
 
 		await pool.query('delete from todos where id = $1', [id])
 
-		return res.status(204).send()
+    const todosDel = rows[0]
+
+		// return res.status(204).send()
+    return res.status(204).json(todosDel)
 	} catch (error) {
         console.log(error)
 		return res.status(500).json({ mensagem: 'Erro interno do servidor' })
