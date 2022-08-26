@@ -22,7 +22,7 @@ const cadastrarTarefa = async (req, res) => {
 };
 
 const atualizarTarefa = async (req, res) => {
-  const { tarefa } = req.body;
+  const { tarefa, ativo } = req.body;
   const { id } = req.params;
 
   try {
@@ -37,7 +37,7 @@ const atualizarTarefa = async (req, res) => {
 
     const queryAtualizaTarefa = "update todos set tarefa = $1 where id = $2";
 
-    await pool.query(queryAtualizaTarefa, [tarefa, id]);
+    await pool.query(queryAtualizaTarefa, [tarefa, ativo , id]);
 
     // return res.status(204).send();
     return res.status(204).json(queryAtualizaTarefa);
