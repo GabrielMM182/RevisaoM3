@@ -13,5 +13,5 @@ CREATE TABLE IF NOT EXISTS todos (
     usuario_id INTEGER NOT NULL REFERENCES usuarios(id)
 );
 
-INSERT INTO usuarios (id, nome, email, senha) VALUES ('3', 'maroquinho', 'maroquinho@email.com', '123456')
-INSERT INTO usuarios (id, nome, email, senha) VALUES ('4', 'jess', 'jess@email.com', '123456789')
+-- INSERT INTO usuarios (id, nome, email, senha) VALUES ('3', 'maroquinho', 'maroquinho@email.com', '123456')
+-- INSERT INTO usuarios (id, nome, email, senha) VALUES ('4', 'jess', 'jess@email.com', '123456789')
