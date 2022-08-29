@@ -35,7 +35,7 @@ const atualizarTarefa = async (req, res) => {
       return res.status(404).json({ mensagem: "Tarefa não existe" });
     }
 
-    const queryAtualizaTarefa = "update todos set tarefa = $1 where id = $2";
+    const queryAtualizaTarefa = "update todos set tarefa= $1, ativo = $2 where id = $3";
 
     await pool.query(queryAtualizaTarefa, [tarefa, ativo , id]);
 
