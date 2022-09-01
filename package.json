@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/index.js",
-    "api": "nodemon ./src/breakingBad.js"
+    "api": "nodemon ./src/breakingBad.js",
+    "start": "node ./src/index.js"
+
   },
   "keywords": [],
   "author": "",
